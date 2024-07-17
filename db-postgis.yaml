@@ -1,0 +1,23 @@
+version: "3.8"
+ 
+services:
+  postgres:
+    image: postgis/postgis
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      DATABASE_HOST: 127.0.0.1
+      POSTGRES_DB: diy_auth
+      POSTGRES_USER: enlineauser
+      POSTGRES_PASSWORD: 3nl1n34*1234
+ 
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "8085:80"
+    depends_on:
+      - postgres
